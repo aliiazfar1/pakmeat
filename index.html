@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pak Meat — Qurbani 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --g:#1a4d2e;--gm:#2d7a4f;--gl:#e8f5ee;--gll:#f2faf5;--gd:#0f2e1b;
+  --gold:#c9a84c;--goldd:#a8892e;--goldt:#f5e9c8;
+  --cream:#fdfaf4;--text:#1c2b20;--tm:#5a7060;--bd:#d4e6d9;--w:#ffffff;
+  --red:#c0392b;--redl:#fdecea;
+  --sh:0 2px 16px rgba(26,77,46,.09);--shl:0 6px 32px rgba(26,77,46,.14);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);min-height:100vh}
+
+/* HEADER */
+.hdr{background:var(--g);padding:0 20px;position:sticky;top:0;z-index:200;box-shadow:0 2px 10px rgba(0,0,0,.25)}
+.hdr-in{max-width:1060px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:58px}
+.logo strong{display:block;font-size:16px;font-weight:700;color:#fff}
+.logo span{font-size:10px;color:rgba(255,255,255,.5);letter-spacing:1.2px;text-transform:uppercase}
+.nav{display:flex;gap:6px}
+.nb{padding:7px 15px;border-radius:6px;font-size:13px;font-weight:500;cursor:pointer;border:none;font-family:inherit;transition:all .18s}
+.nb.on,.nb:hover{background:var(--gold);color:var(--g)}
+.nb:not(.on){background:rgba(255,255,255,.11);color:#fff}
+
+/* PAGES */
+.pg{display:none}.pg.on{display:block}
+
+/* HERO */
+.hero{background:linear-gradient(150deg,var(--g) 0%,var(--gm) 60%,#4a9e70 100%);padding:44px 20px 74px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;opacity:.04;background-image:repeating-linear-gradient(45deg,#fff 0,#fff 1px,transparent 0,transparent 50%);background-size:20px 20px}
+.live-pill{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:20px;padding:3px 11px;font-size:11px;color:rgba(255,255,255,.75);margin-bottom:16px}
+.live-dot{width:6px;height:6px;border-radius:50%;background:#4ade80;animation:pulse 1.8s infinite}
+.hero h1{font-size:26px;font-weight:700;color:#fff;margin-bottom:6px;position:relative}
+.hero p{font-size:14px;color:rgba(255,255,255,.65);margin-bottom:28px;position:relative}
+
+/* SEARCH CARD */
+.sc{background:var(--w);border-radius:16px;padding:26px 22px;max-width:460px;margin:0 auto;box-shadow:var(--shl);position:relative}
+.sc label{font-size:12px;font-weight:600;color:var(--tm);text-transform:uppercase;letter-spacing:.6px;margin-bottom:9px;display:block}
+.srow{display:flex;gap:8px}
+.si{flex:1;padding:13px 15px;border-radius:10px;border:1.5px solid var(--bd);font-size:16px;font-family:inherit;color:var(--text);background:var(--cream);outline:none;transition:border-color .2s}
+.si:focus{border-color:var(--gm);background:#fff}
+.sbtn{padding:13px 20px;border-radius:10px;background:var(--g);color:#fff;border:none;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;transition:background .2s;white-space:nowrap}
+.sbtn:hover{background:var(--gm)}
+.shint{font-size:12px;color:var(--tm);margin-top:8px}
+.lbar{height:3px;background:var(--gl);border-radius:0 0 14px 14px;overflow:hidden;margin-top:10px;display:none}
+.lbar.on{display:block}
+.lbar-i{height:100%;width:38%;background:var(--gm);border-radius:4px;animation:lslide 1.2s ease-in-out infinite}
+@keyframes lslide{0%{transform:translateX(-120%)}100%{transform:translateX(380%)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+@keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+
+/* RESULT */
+.rw{max-width:580px;margin:-38px auto 0;padding:0 16px 60px;position:relative;z-index:2}
+.nf{background:var(--w);border-radius:14px;padding:32px;text-align:center;box-shadow:var(--sh);border:1px solid var(--bd)}
+.nf-ico{font-size:38px;margin-bottom:10px}
+.nf h3{font-size:17px;color:var(--red);margin-bottom:6px}
+.nf p{font-size:14px;color:var(--tm)}
+
+/* ORDER CARD */
+.oc{background:var(--w);border-radius:16px;box-shadow:var(--shl);overflow:hidden;border:1px solid var(--bd);animation:up .3s ease}
+.oh{background:var(--g);padding:18px 22px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.oh h2{font-size:17px;font-weight:600;color:#fff}
+.oh .ohsub{font-size:12px;color:rgba(255,255,255,.5);margin-top:2px}
+.bb{background:var(--gold);color:var(--g);font-size:12px;font-weight:700;padding:5px 13px;border-radius:20px;white-space:nowrap}
+
+/* STEPS */
+.sbar{padding:22px;border-bottom:1px solid var(--bd)}
+.sbar-t{font-size:11px;font-weight:600;color:var(--tm);letter-spacing:.7px;text-transform:uppercase;margin-bottom:18px}
+.steps{display:flex}
+.step{flex:1;display:flex;flex-direction:column;align-items:center;position:relative;text-align:center}
+.sl{position:absolute;top:13px;left:50%;right:-50%;height:3px;background:var(--bd);z-index:0}
+.step:last-child .sl{display:none}
+.sd{width:26px;height:26px;border-radius:50%;border:3px solid var(--bd);background:var(--w);z-index:1;position:relative;display:flex;align-items:center;justify-content:center;transition:all .35s}
+.step.done .sd{background:var(--g);border-color:var(--g)}
+.step.done .sd::after{content:'✓';font-size:11px;font-weight:700;color:#fff}
+.step.act .sd{background:var(--gold);border-color:var(--gold);box-shadow:0 0 0 4px var(--goldt)}
+.step.act .sd::after{content:'●';font-size:7px;color:var(--g)}
+.step.done .sl{background:var(--g)}
+.stl{font-size:9px;color:var(--tm);margin-top:7px;line-height:1.3}
+.step.act .stl{color:var(--g);font-weight:600}
+.step.done .stl{color:var(--g)}
+.scur{margin-top:18px;padding:11px 14px;border-radius:10px;background:var(--gl);border:1px solid #b6ddc5;display:flex;align-items:center;gap:10px}
+.sdot{width:9px;height:9px;border-radius:50%;background:var(--gm);flex-shrink:0;animation:pulse 2s infinite}
+.stxt{font-size:14px;font-weight:500;color:var(--g)}
+.sup{font-size:11px;color:var(--tm);margin-left:auto;white-space:nowrap}
+
+/* DETAIL GRID */
+.od{padding:18px 22px}
+.od-t{font-size:11px;font-weight:600;color:var(--tm);letter-spacing:.7px;text-transform:uppercase;margin-bottom:14px}
+.dg{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.di.full{grid-column:1/-1}
+.dl{font-size:11px;color:var(--tm);text-transform:uppercase;letter-spacing:.4px;margin-bottom:3px}
+.dv{font-size:14px;color:var(--text)}
+
+/* CONTACT FOOTER */
+.cfoo{background:var(--gl);border-top:1px solid var(--bd);padding:13px 22px;display:flex;align-items:center;justify-content:center;gap:10px}
+.cfoo span{font-size:13px;color:var(--tm)}
+.cfoo a{font-size:13px;color:var(--g);font-weight:600;text-decoration:none}
+
+/* ADMIN GATE */
+.gate{max-width:380px;margin:64px auto;background:var(--w);border-radius:16px;padding:36px 28px;box-shadow:var(--shl);border:1px solid var(--bd);text-align:center}
+.gate h2{font-size:20px;margin-bottom:6px;color:var(--g)}
+.gate p{font-size:14px;color:var(--tm);margin-bottom:22px}
+.pin-in{width:100%;padding:13px;border-radius:10px;border:1.5px solid var(--bd);font-size:20px;font-family:inherit;color:var(--text);background:var(--cream);outline:none;margin-bottom:12px;text-align:center;letter-spacing:8px;transition:border-color .2s}
+.pin-in:focus{border-color:var(--g);background:#fff}
+.pin-btn{width:100%;padding:13px;border-radius:10px;background:var(--g);color:#fff;border:none;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit;transition:background .2s}
+.pin-btn:hover{background:var(--gm)}
+.pin-err{font-size:13px;color:var(--red);margin-top:8px;display:none}
+
+/* ADMIN PANEL */
+.aw{max-width:1060px;margin:0 auto;padding:22px 16px 60px}
+.atb{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:10px}
+.at-l h2{font-size:21px;font-weight:700;color:var(--g)}
+.at-l p{font-size:13px;color:var(--tm);margin-top:2px}
+.at-r{display:flex;gap:8px;flex-wrap:wrap}
+.abtn{padding:8px 15px;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;font-family:inherit;border:none;transition:all .18s}
+.abtn.green{background:var(--g);color:#fff}.abtn.green:hover{background:var(--gm)}
+.abtn.gold{background:var(--gold);color:var(--g)}.abtn.gold:hover{background:var(--goldd)}
+.abtn.ghost{background:none;border:1px solid var(--bd);color:var(--tm)}.abtn.ghost:hover{border-color:var(--red);color:var(--red)}
+.abtn-add{padding:10px 20px;border-radius:9px;background:var(--gold);color:var(--g);border:none;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;transition:all .18s;box-shadow:0 3px 12px rgba(201,168,76,.4);letter-spacing:.2px}
+.abtn-add:hover{background:var(--goldd);color:#fff;transform:translateY(-1px);box-shadow:0 5px 18px rgba(201,168,76,.5)}
+
+/* FLOATING ADD BUTTON */
+.fab{position:fixed;bottom:28px;right:24px;z-index:300;background:var(--gold);color:var(--g);border:none;border-radius:50px;padding:14px 22px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;box-shadow:0 4px 20px rgba(201,168,76,.5);transition:all .2s;display:none;align-items:center;gap:8px}
+.fab:hover{background:var(--goldd);color:#fff;transform:translateY(-2px);box-shadow:0 6px 24px rgba(201,168,76,.6)}
+.fab.on{display:flex}
+
+/* STATS */
+.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:20px}
+.stat{background:var(--w);border-radius:10px;padding:13px 10px;text-align:center;border:1px solid var(--bd);cursor:pointer;transition:all .18s}
+.stat:hover{border-color:var(--gm);box-shadow:var(--sh)}
+.stat.active{border-color:var(--g);background:var(--gl)}
+.stat-n{font-size:24px;font-weight:700}
+.stat-l{font-size:10px;color:var(--tm);margin-top:2px;text-transform:uppercase;letter-spacing:.4px}
+
+/* FILTERS */
+.frow{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap}
+.fi{padding:9px 13px;border-radius:8px;border:1px solid var(--bd);font-size:13px;font-family:inherit;color:var(--text);background:var(--w);outline:none;flex:1;min-width:140px;transition:border-color .2s}
+.fi:focus{border-color:var(--gm)}
+.fs{padding:9px 11px;border-radius:8px;border:1px solid var(--bd);font-size:13px;font-family:inherit;color:var(--text);background:var(--w);outline:none;cursor:pointer}
+
+/* TABLE */
+.twrap{background:var(--w);border-radius:14px;border:1px solid var(--bd);overflow:hidden;box-shadow:var(--sh);overflow-x:auto}
+.tbl{width:100%;border-collapse:collapse;min-width:640px}
+.tbl thead th{background:var(--g);color:rgba(255,255,255,.8);font-size:11px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;padding:11px 13px;text-align:left;white-space:nowrap}
+.tbl tbody tr{border-bottom:1px solid var(--bd);transition:background .12s}
+.tbl tbody tr:hover{background:var(--gll)}
+.tbl tbody tr:last-child{border-bottom:none}
+.tbl td{padding:11px 13px;font-size:13px;vertical-align:middle}
+.tn{font-weight:500}
+.tid{font-family:monospace;font-size:12px;color:var(--tm)}
+.ssel{padding:7px 10px;border-radius:8px;border:1px solid var(--bd);font-size:12px;font-family:inherit;cursor:pointer;background:var(--w);color:var(--text);outline:none;min-width:170px}
+.ssel:focus{border-color:var(--gm)}
+.svbtn{padding:7px 13px;border-radius:7px;background:var(--g);color:#fff;border:none;font-size:12px;font-weight:600;cursor:pointer;font-family:inherit;transition:all .18s;margin-left:5px;white-space:nowrap}
+.svbtn:hover{background:var(--gm)}
+.svbtn:disabled{opacity:.3;cursor:default}
+.svbtn.ok{background:#2a9d5c}
+.editbtn{padding:6px 10px;border-radius:7px;background:none;border:1px solid var(--bd);color:var(--tm);font-size:11px;cursor:pointer;font-family:inherit;margin-left:4px;transition:all .18s;white-space:nowrap}
+.editbtn:hover{border-color:var(--gm);color:var(--g)}
+.delbtn{padding:6px 10px;border-radius:7px;background:none;border:1px solid #ecc;color:var(--red);font-size:11px;cursor:pointer;font-family:inherit;margin-left:4px;transition:all .18s}
+.delbtn:hover{background:var(--redl)}
+.nr{text-align:center;padding:40px;color:var(--tm);font-size:14px}
+
+/* STATUS BADGE */
+.sbadge{display:inline-block;padding:3px 9px;border-radius:12px;font-size:11px;font-weight:600;white-space:nowrap}
+.sbadge.Waiting{background:#f3f4f6;color:#6b7280}
+.sbadge.Slaughtered{background:#fef3c7;color:#92400e}
+.sbadge.Cutting{background:#ffedd5;color:#9a3412}
+.sbadge.Ready{background:#dbeafe;color:#1e40af}
+.sbadge.Delivered{background:#d1fae5;color:#065f46}
+
+/* MODAL */
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:500;display:none;align-items:center;justify-content:center;padding:16px}
+.modal-bg.on{display:flex}
+.modal{background:var(--w);border-radius:16px;padding:28px 24px;width:100%;max-width:560px;max-height:92vh;overflow-y:auto;box-shadow:0 16px 60px rgba(0,0,0,.3);animation:up .25s ease}
+.modal h3{font-size:18px;font-weight:700;color:var(--g);margin-bottom:20px}
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px}
+.fg .full{grid-column:1/-1}
+.fl{font-size:11px;font-weight:600;color:var(--tm);text-transform:uppercase;letter-spacing:.5px;margin-bottom:5px;display:block}
+.fin{width:100%;padding:10px 13px;border-radius:9px;border:1.5px solid var(--bd);font-size:14px;font-family:inherit;color:var(--text);background:var(--cream);outline:none;transition:border-color .2s}
+.fin:focus{border-color:var(--gm);background:#fff}
+.fsel{width:100%;padding:10px 11px;border-radius:9px;border:1.5px solid var(--bd);font-size:14px;font-family:inherit;color:var(--text);background:var(--cream);outline:none;cursor:pointer;transition:border-color .2s}
+.fsel:focus{border-color:var(--gm);background:#fff}
+.mbtns{display:flex;gap:10px;justify-content:flex-end}
+.mcancelbtn{padding:10px 20px;border-radius:9px;background:none;border:1px solid var(--bd);color:var(--tm);font-size:14px;font-weight:500;cursor:pointer;font-family:inherit;transition:all .18s}
+.mcancelbtn:hover{border-color:var(--red);color:var(--red)}
+.msavebtn{padding:10px 22px;border-radius:9px;background:var(--g);color:#fff;border:none;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;transition:background .18s}
+.msavebtn:hover{background:var(--gm)}
+
+/* BULK UPDATE BAR */
+.bulk-bar{background:var(--g);color:#fff;border-radius:10px;padding:12px 16px;display:none;align-items:center;gap:12px;margin-bottom:12px;flex-wrap:wrap}
+.bulk-bar.on{display:flex}
+.bulk-bar span{font-size:13px}
+.bulk-sel{padding:7px 10px;border-radius:7px;border:1px solid rgba(255,255,255,.3);font-size:13px;font-family:inherit;cursor:pointer;background:rgba(255,255,255,.1);color:#fff;outline:none}
+.bulk-go{padding:7px 14px;border-radius:7px;background:var(--gold);color:var(--g);border:none;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit}
+.bulk-cl{padding:7px 12px;border-radius:7px;background:rgba(255,255,255,.1);color:#fff;border:none;font-size:13px;cursor:pointer;font-family:inherit}
+.chk{width:15px;height:15px;cursor:pointer;accent-color:var(--g)}
+
+/* TOAST */
+.toast{position:fixed;bottom:22px;right:22px;z-index:999;background:var(--g);color:#fff;padding:11px 18px;border-radius:10px;font-size:14px;font-weight:500;box-shadow:0 4px 20px rgba(0,0,0,.2);transform:translateY(70px);opacity:0;transition:all .28s;pointer-events:none;max-width:320px}
+.toast.on{transform:translateY(0);opacity:1}
+
+/* MOBILE */
+@media(max-width:640px){
+  .hero h1{font-size:20px}
+  .dg{grid-template-columns:1fr}
+  .stats{grid-template-columns:repeat(3,1fr)}
+  .stl{font-size:8px}
+  .fg{grid-template-columns:1fr}
+  .fg .full{grid-column:1}
+  .oh{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <div class="hdr-in">
+    <div class="logo">
+      <strong>Pak Meat</strong>
+      <span>Qurbani 2026</span>
+    </div>
+    <nav class="nav">
+      <button class="nb on" onclick="showPg('c',this)">Track Order</button>
+      <button class="nb" onclick="showPg('a',this)">Admin</button>
+    </nav>
+  </div>
+</header>
+
+<div class="toast" id="toast"></div>
+<button class="fab" id="fab" onclick="openModal()">＋ Add Order</button>
+
+<!-- ADD/EDIT ORDER MODAL -->
+<div class="modal-bg" id="modalBg">
+  <div class="modal">
+    <h3 id="modalTitle">Add New Order</h3>
+    <div class="fg">
+      <div>
+        <label class="fl">Bill No *</label>
+        <input class="fin" id="f-bill" placeholder="e.g. 5900">
+      </div>
+      <div>
+        <label class="fl">Customer Name *</label>
+        <input class="fin" id="f-name" placeholder="Full name">
+      </div>
+      <div>
+        <label class="fl">Phone</label>
+        <input class="fin" id="f-phone" placeholder="0300-0000000">
+      </div>
+      <div>
+        <label class="fl">Order Type</label>
+        <input class="fin" id="f-type" placeholder="e.g. 1 Goat, 2 Cow Share">
+      </div>
+      <div class="full">
+        <label class="fl">Address</label>
+        <input class="fin" id="f-address" placeholder="Delivery address">
+      </div>
+      <div>
+        <label class="fl">Day</label>
+        <select class="fsel" id="f-day">
+          <option value="">— Select —</option>
+          <option>Day 1</option><option>Day 2</option><option>Day 3</option><option>Flexible</option>
+        </select>
+      </div>
+      <div>
+        <label class="fl">Time Slot</label>
+        <input class="fin" id="f-time" placeholder="e.g. 10:00 - 11:30">
+      </div>
+      <div>
+        <label class="fl">Amount Paid (Rs.)</label>
+        <input class="fin" id="f-paid" placeholder="e.g. 75000" type="text">
+      </div>
+      <div>
+        <label class="fl">Payment Mode</label>
+        <select class="fsel" id="f-paymode">
+          <option value="">— Select —</option>
+          <option>Cash</option><option>Card</option><option>Online</option><option>Cheque</option><option>Card/ Cash</option>
+        </select>
+      </div>
+      <div class="full">
+        <label class="fl">Notes / Cutting Preferences</label>
+        <input class="fin" id="f-notes" placeholder="Special instructions (optional)">
+      </div>
+      <div class="full">
+        <label class="fl">Status</label>
+        <select class="fsel" id="f-status">
+          <option>Waiting</option>
+          <option>Slaughtered</option>
+          <option>Cutting in Progress</option>
+          <option>Ready for Delivery</option>
+          <option>Delivered</option>
+        </select>
+      </div>
+    </div>
+    <div class="mbtns">
+      <button class="mcancelbtn" onclick="closeModal()">Cancel</button>
+      <button class="msavebtn" onclick="saveOrder()">Save Order</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ CUSTOMER PAGE ══════════ -->
+<div class="pg on" id="pg-c">
+  <div class="hero">
+    <div class="live-pill"><div class="live-dot"></div> Live Tracking</div>
+    <h1>Track Your Qurbani Order</h1>
+    <p>Enter your bill number to see live status updates</p>
+    <div class="sc">
+      <label>Bill / Booking Number</label>
+      <div class="srow">
+        <input class="si" id="si" type="text" placeholder="e.g. 5760" maxlength="10"
+          onkeydown="if(event.key==='Enter')doSearch()">
+        <button class="sbtn" onclick="doSearch()">Search</button>
+      </div>
+      <p class="shint">Your bill number is printed on your booking receipt</p>
+      <div class="lbar" id="lb"><div class="lbar-i"></div></div>
+    </div>
+  </div>
+  <div class="rw" id="rw"></div>
+</div>
+
+<!-- ══════════ ADMIN PAGE ══════════ -->
+<div class="pg" id="pg-a">
+
+  <!-- Gate -->
+  <div id="ag">
+    <div class="gate">
+      <div style="font-size:34px;margin-bottom:10px">🔐</div>
+      <h2>Admin Access</h2>
+      <p>Enter your PIN to manage orders</p>
+      <input class="pin-in" id="pin" type="password" placeholder="••••" maxlength="6"
+        onkeydown="if(event.key==='Enter')login()">
+      <button class="pin-btn" onclick="login()">Login</button>
+      <p class="pin-err" id="perr">Incorrect PIN. Try again.</p>
+    </div>
+  </div>
+
+  <!-- Panel -->
+  <div id="ap" style="display:none">
+    <div class="aw">
+
+      <div class="atb">
+        <div class="at-l">
+          <h2>Order Management</h2>
+          <p id="asub">Loading…</p>
+        </div>
+        <div class="at-r">
+          <button class="abtn-add" onclick="openModal()">＋ Add New Order</button>
+          <button class="abtn ghost" onclick="logout()">Logout</button>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats" id="stats"></div>
+
+      <!-- Filters -->
+      <div class="frow">
+        <input class="fi" id="asrch" placeholder="Search name or bill number…" oninput="renderTbl()">
+        <select class="fs" id="sfil" onchange="renderTbl()">
+          <option value="">All Statuses</option>
+          <option>Waiting</option>
+          <option>Slaughtered</option>
+          <option>Cutting in Progress</option>
+          <option>Ready for Delivery</option>
+          <option>Delivered</option>
+        </select>
+        <select class="fs" id="dfil" onchange="renderTbl()">
+          <option value="">All Days</option>
+          <option>Day 1</option><option>Day 2</option><option>Day 3</option>
+        </select>
+      </div>
+
+      <!-- Bulk update bar -->
+      <div class="bulk-bar" id="bulkBar">
+        <span id="bulkCount">0 selected</span>
+        <select class="bulk-sel" id="bulkSel">
+          <option value="">Set status…</option>
+          <option>Waiting</option>
+          <option>Slaughtered</option>
+          <option>Cutting in Progress</option>
+          <option>Ready for Delivery</option>
+          <option>Delivered</option>
+        </select>
+        <button class="bulk-go" onclick="bulkUpdate()">Apply</button>
+        <button class="bulk-cl" onclick="clearSel()">Clear</button>
+      </div>
+
+      <div class="twrap">
+        <table class="tbl">
+          <thead>
+            <tr>
+              <th><input type="checkbox" class="chk" id="chkAll" onchange="toggleAll(this.checked)"></th>
+              <th>Bill</th>
+              <th>Customer</th>
+              <th>Order Type</th>
+              <th>Day / Time</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="tb"></tbody>
+        </table>
+      </div>
+
+      <p style="font-size:12px;color:var(--tm);margin-top:12px;text-align:right" id="rcount"></p>
+    </div>
+  </div>
+</div>
+
+<script>
+// ──────────── CONFIG ────────────
+const PIN = '3141'; // ← change your admin PIN here
+const DB_KEY = 'pm_orders_2026v2';
+
+// ──────────── SEED DATA (60 orders) ────────────
+const SEED = [
+{"id":"5760","name":"Khalil Ahmed Shah","phone":"0300-8292308","address":"80-C, Main Khy e Badar, DHA Phase 07","day":"Day 1","time":"10:00 - 11:30","order_type":"1 Goat","net_paid":"73000","payment_mode":"Cash","notes":"","order_status":"Waiting"},
+{"id":"5761","name":"Khaizer Sb","phone":"0333-2177572","address":"22-B 7th East St Phase 01","day":"Day 1","time":"10:00 - 12:00","order_type":"1 Goat","net_paid":"73000","payment_mode":"Cash","notes":"","order_status":"Waiting"},
+{"id":"5763","name":"Adnan Ahmed","phone":"0300-0822242","address":"Clif Resindency 722 7th floor block A","day":"Day 1","time":"01:00 - 02:00","order_type":"1 Goat, 1 Cow Share","net_paid":"121500","payment_mode":"Cash","notes":"","order_status":"Waiting"},
+{"id":"5774","name":"Mrs. Farrukh","phone":"0345-2251599","address":"Anees Regency, Appt No 301, 7th Comm St. DHA Phase 04","day":"Day 1","time":"10:00 - 11:30","order_type":"1 Goat","net_paid":"75000","payment_mode":"Card","notes":"","order_status":"Waiting"},
+{"id":"5779","name":"Tariq Bashir","phone":"0333-2316231","address":"Flat 3, 2nd Floor, Plot 01, 4th Comm St. DHA Phase 02","day":"Day 1","time":"10:00 - 11:30","order_type":"1 Goat","net_paid":"75000","payment_mode":"Card","notes":"","order_status":"Waiting"},
+{"id":"5784","name":"Khalil Ahmed","phone":"0300-8292308","address":"80-C Main Khy Badar Ph 07","day":"Day 2","time":"09:00 - 10:00","order_type":"1 Goat","net_paid":"73000","payment_mode":"Cash","notes":"","order_status":"Waiting"},
+{"id":"5794","name":"Khalid Ghani","phone":"0301-8220782","address":"Y1- 19TH East St Phase 01","day":"Day 1","time":"10:00 - 11:30","order_type":"3 Cow Share","net_paid":"139500","payment_mode":"Card/ Cash","notes":"","order_status":"Waiting"},
+{"id":"5816","name":"Muhammad Arif Mateen","phone":"0333-2132167","address":"37-1, Main Khayaban e Shamsheer, Phase 5, DHA","day":"Day 1","time":"09:30 - 11:00","order_type":"1 Goat, 1 Cow Share","net_paid":"121500","payment_mode":"Cash","notes":"Specifications","order_status":"Waiting"},
+{"id":"5825","name":"Jan Muhammad Sattar","phone":"0300-3636567","address":"Avanti Pard Veiw 501, Allama Iqbal Road Off Khashmir Road","day":"Day 1","time":"10:00 - 11:30","order_type":"1 Goat","net_paid":"73500","payment_mode":"Cash","notes":"","order_status":"Waiting"},
+{"id":"5790","name":"Mrs Sherazi","phone":"0321-9995969","address":"1-H Askari Appt Khaliq-uz-Zaman Road block 8 clifton","day":"Day 1","time":"10:00 - 11:30","order_type":"2 Cow Share","net_paid":"90000","payment_mode":"Cash","notes":"Meat specifications","order_status":"Waiting"},
+{"id":"5771","name":"Sanah Sherazi","phone":"0321-9262776","address":"Flat 201, Building 10-C, Itehad Lane 6, DHA Phase 6","day":"Day 1","time":"10:00 - 11:30","order_type":"1 Cow Share","net_paid":"46500","payment_mode":"Cash","notes":"","order_status":"Waiting"},
+{"id":"5837","name":"Samina Iqbal","phone":"0300-2370994","address":"T-19 15TH East St Phase 01","day":"Day 2","time":"10:00 - 11:00","order_type":"1 Cow Share","net_paid":"46500","payment_mode":"Cash","notes":"","order_status":"Waiting"},
+{"id":"5839","name":"Furqan Jaffer","phone":"0321-2392119","address":"C-256, Block 14, Gulistan e Jouher, Karachi","day":"Day 1","time":"12:30 - 02:00","order_type":"2 Budget Share","net_paid":"67000","payment_mode":"Card","notes":"","order_status":"Waiting"},
+{"id":"5846","name":"Hira Aziz","phone":"0321-3002014","address":"414, 11 Street Precinst 1, Bharia Town","day":"Day 1","time":"01:00 - 03:00","order_type":"1 Budget Share","net_paid":"33500","payment_mode":"Online","notes":"Johar van collection from Jouher","order_status":"Waiting"},
+{"id":"5849","name":"Mrs Masood (Filza Raas)","phone":"0334-3978532","address":"A-140, Block 04, Gulistan e Jauher","day":"Day 1","time":"12:30 - 02:30","order_type":"1 Budget Share","net_paid":"33500","payment_mode":"Online","notes":"","order_status":"Waiting"},
+{"id":"5858","name":"Yumna Imran","phone":"0334-3978532","address":"A-140, Block 04, Gulistan e Jauher","day":"Day 1","time":"12:30 - 02:30","order_type":"1 Budget Share","net_paid":"33500","payment_mode":"Online","notes":"","order_status":"Waiting"},
+{"id":"5833","name":"Hassan Salim","phone":"0302-2544544","address":"Noorani View Apt Britto Road Garden East Khi","day":"Day 1","time":"12:30 - 01:30","order_type":"1 Cow Share","net_paid":"46500","payment_mode":"Online","notes":"","order_status":"Waiting"},
+{"id":"5859","name":"Saad Khan","phone":"0345-6426250","address":"65/2, Main Khayban e Nishat, Phase 06, DHA","day":"Day 1","time":"01:00 - 02:30","order_type":"1 Budget Share","net_paid":"33500","payment_mode":"Online","notes":"","order_status":"Waiting"},
+{"id":"5863","name":"Zulfiqar Ahmed Khan","phone":"0301-8294542","address":"House No 14/2 street 05 Zamzama Ph 05","day":"Day 1","time":"10:30 - 11:30","order_type":"1 Cow Share","net_paid":"46500","payment_mode":"Online","notes":"","order_status":"Waiting"},
+{"id":"5864","name":"Sadaf Tahir","phone":"0300-8291950","address":"1A-1/2 4th east Street Phase 1 DHA","day":"Day 1","time":"01:00 - 02:30","order_type":"1 Budget Share","net_paid":"33500","payment_mode":"Online","notes":"","order_status":"Waiting"},
+{"id":"5865","name":"Saad Feroz","phone":"0300-2151234","address":"Flat no 202, building 75-C Al-Murtaza lane 03 phase 08 DHA","day":"Day 2","time":"09:00 - 10:00","order_type":"1 Budget Share","net_paid":"33500","payment_mode":"Online","notes":"","order_status":"Waiting"},
+{"id":"5866","name":"Mujtaba Khalil","phone":"0333-2271877","address":"Plot 1C, 2nd Floor Lane 05 Bukhari Comm Ph 06","day":"Day 1","time":"01:30 - 03:30","order_type":"1 Budget Share","net_paid":"33500","payment_mode":"Online","notes":"","order_status":"Waiting"},
+{"id":"5867","name":"Shahwaiz","phone":"0321-2226998","address":"V15, 17 East St Ph 01 DHA","day":"Day 1","time":"11:30 - 12:30","order_type":"2 Cow Share","net_paid":"89000","payment_mode":"Online","notes":"","order_status":"Waiting"},
+{"id":"5868","name":"Asif Menai","phone":"0300-8232730","address":"51/1 Main Khy-Shujaat DHA Ph 5","day":"Day 2","time":"09:00 - 10:00","order_type":"3 Cow Share","net_paid":"132000","payment_mode":"Card","notes":"","order_status":"Waiting"},
+{"id":"5870","name":"Haji Ibaadullah Marhoom","phone":"0300-3559498","address":"A 523, Block J North Nazimabad","day":"Day 1","time":"02:00 - 03:30","order_type":"1 Cow Share","net_paid":"46500","payment_mode":"Online","notes":"","order_status":"Waiting"},
+{"id":"5873","name":"Mr Imran","phone":"0333-3167734","address":"Flat B-206, 2nd Floor, Erum Square, Block 11, Gulshan Iqbal","day":"Day 1","time":"01:00 - 02:30","order_type":"1 Cow Share","net_paid":"46500","payment_mode":"Online","notes":"","order_status":"Waiting"},
+{"id":"5874","name":"Zakia Nasir","phone":"0335-2108889","address":"Hassan Canter Flat C12 Block 16 Gulshan Iqbal","day":"Day 2","time":"09:00 - 10:00","order_type":"2 Budget Share","net_paid":"68000","payment_mode":"Online","notes":"","order_status":"Waiting"},
+{"id":"5875","name":"Ghazanfar Paracha","phone":"0300-2151234","address":"Flat no 202 building 75C al murtaza lane phase 8","day":"Day 2","time":"09:00 - 10:00","order_type":"2 Budget Share","net_paid":"67000","payment_mode":"Online","notes":"","order_status":"Waiting"},
+{"id":"5876","name":"Fawad Anwer","phone":"0335-0279296","address":"flat A-1502 Goher tower block 13/e Gulshan iqbal","day":"Day 1","time":"01:00 - 02:30","order_type":"1 Cow Share","net_paid":"45000","payment_mode":"Online","notes":"","order_status":"Waiting"},
+{"id":"5878","name":"Abdul Ghani Dadabhoy","phone":"0300-23382236","address":"house no 5 Khy E-Rizawan Phase 7 DHA","day":"Day 1","time":"01:00 - 02:30","order_type":"1 Budget Share","net_paid":"33500","payment_mode":"Card","notes":"","order_status":"Waiting"},
+{"id":"5881","name":"Alam Family","phone":"0331-2524101","address":"11A/1, North Avenue DHA Phase 1","day":"Day 2","time":"09:30 - 10:30","order_type":"1 Goat","net_paid":"72500","payment_mode":"Online","notes":"","order_status":"Waiting"},
+{"id":"5882","name":"Sajwar Shoail","phone":"0342-2017093","address":"B-121 Street 06 Block 18 Gulshan Iqbal","day":"Day 1","time":"01:00 - 02:30","order_type":"1 Budget Share","net_paid":"34500","payment_mode":"Online","notes":"","order_status":"Waiting"},
+{"id":"5883","name":"Nisar Ahmed","phone":"0333-2408889","address":"Hassan Canter Flat C12 Block 16 Gulshan Iqbal","day":"Day 1","time":"01:00 - 02:30","order_type":"2 Budget Share","net_paid":"67000","payment_mode":"Online","notes":"","order_status":"Waiting"},
+{"id":"5886","name":"Zainab Haq","phone":"0320-5440910","address":"32 B/2, 13TH Canteral Street Ph 02","day":"Day 2","time":"10:00 - 11:00","order_type":"1 Budget Share","net_paid":"33500","payment_mode":"Online","notes":"","order_status":"Waiting"},
+{"id":"5888","name":"Yawer","phone":"0300-8231231","address":"94/2 Main Saba Ave DHA pH 06","day":"Day 2","time":"10:00 - 11:00","order_type":"2 Goat","net_paid":"140000","payment_mode":"Card","notes":"","order_status":"Waiting"},
+{"id":"5887","name":"Muhammad Haider Khursheed","phone":"0323-1914798","address":"flat number 1, plot 28/C, street number 1, badar commercial, DHA phase 5","day":"Day 2","time":"10:00 - 11:00","order_type":"1 Budget Share","net_paid":"33500","payment_mode":"Online","notes":"","order_status":"Waiting"},
+{"id":"5892","name":"Miss Shadab","phone":"0332-7949156","address":"Flat 308, Raza Excellency Block 07 Gulstan e Johar","day":"Day 1","time":"02:30 - 04:00","order_type":"1 Budget Share","net_paid":"34500","payment_mode":"Online","notes":"","order_status":"Waiting"},
+{"id":"5893","name":"Abdullah Iqbal","phone":"0324-2369500","address":"o 6-3 Florida Homes 33rd St Shamsheer Ph 5","day":"Day 1","time":"02:30 - 04:00","order_type":"1 Budget Share","net_paid":"34500","payment_mode":"Cash","notes":"","order_status":"Waiting"},
+{"id":"5895","name":"Dr Mehnaz Nuruddin Gitay","phone":"0300-3501264","address":"L5,L6 Street 27 extension, model colony malir","day":"Day 1","time":"02:30 - 04:00","order_type":"1 Budget Share","net_paid":"33500","payment_mode":"Online","notes":"","order_status":"Waiting"},
+{"id":"5894","name":"Sajwar Shoail (2)","phone":"0342-2017093","address":"B-121 Street 06 Block 18 Gulshan Iqbal","day":"Day 2","time":"09:30 - 10:30","order_type":"2 Budget Share","net_paid":"67000","payment_mode":"Online","notes":"","order_status":"Waiting"},
+{"id":"5783","name":"Aqeel Shah","phone":"0333-5873991","address":"80-C Main Khy Badar, DHA, Phase 07","day":"Day 2","time":"09:00 - 10:00","order_type":"2 Cow Share","net_paid":"91000","payment_mode":"Online","notes":"To confirm if share or goat","order_status":"Waiting"},
+{"id":"5804","name":"Muhammad Iftikhar Ahmed","phone":"0321-9014321","address":"22B1, 5th Golf Course Road, DHA Phase 4","day":"Day 1","time":"12:00 - 01:00","order_type":"1 Goat","net_paid":"75000","payment_mode":"Online","notes":"","order_status":"Waiting"},
+{"id":"5809","name":"Naushaba Farid","phone":"0321-3897759","address":"Flat 202, Saima Square One Mall, Block 10A, Gulshan e Iqbal","day":"Day 1","time":"01:00 - 03:00","order_type":"1 Cow Share","net_paid":"42500","payment_mode":"Online","notes":"","order_status":"Waiting"},
+{"id":"5811","name":"Rais Ahmed (Hasham Ahmed)","phone":"0349-3705055","address":"Flat No C-405, Saima Classic, Gulshan e Iqbal, Block 10A","day":"Day 1","time":"01:30 - 02:30","order_type":"1 Cow Share","net_paid":"46500","payment_mode":"Online","notes":"","order_status":"Waiting"},
+{"id":"5824","name":"Anjum Adil","phone":"0300-8228840","address":"17C, Askari 1, Chaudhri Khaleeq uz Zaman Road, Clifton","day":"Day 1","time":"10:30 - 11:30","order_type":"1 Goat, 2 Budget Share","net_paid":"140500","payment_mode":"Online","notes":"Specification: whole leg + Khaal","order_status":"Waiting"},
+{"id":"5758","name":"Abdul Rafay","phone":"0333-3366374","address":"S-104 D, Khayaban e Mohd Hussain Shaheed, Phase 7 Ext, DHA","day":"Day 1","time":"10:00 - 11:30","order_type":"1 Goat, 1 Cow Share","net_paid":"121000","payment_mode":"Online","notes":"","order_status":"Waiting"},
+{"id":"5817","name":"Muhammad Asif Mateen","phone":"0301-2888894","address":"37-1, Main Khayaban e Shamsheer, Phase 5, DHA","day":"Day 1","time":"03:00 - 04:00","order_type":"3 Goat","net_paid":"222000","payment_mode":"Online","notes":"Specifications","order_status":"Waiting"},
+{"id":"5826","name":"Anjum Adil (Mrs Rizwan Wajid Shaikh)","phone":"0300-8228840","address":"6/1 Main Khy Bukhari Street 03 Corner","day":"Day 1","time":"10:00 - 11:30","order_type":"1 Goat","net_paid":"73500","payment_mode":"Online","notes":"","order_status":"Waiting"},
+{"id":"5828","name":"Razi Imam","phone":"0300-8283010","address":"59/1, Main Khayaban e Bahria, DHA Phase 5, near Sultan masjid","day":"Day 1","time":"11:00 - 12:30","order_type":"3 Budget Share","net_paid":"100500","payment_mode":"Online","notes":"","order_status":"Waiting"},
+{"id":"5829","name":"Syed Muhammad Ukasha","phone":"0334-3456525","address":"5/C, 7/2, Near Matric Board Office Nazimabad","day":"Day 1","time":"01:00 - 03:00","order_type":"1 Budget Share","net_paid":"33500","payment_mode":"Online","notes":"","order_status":"Waiting"},
+{"id":"5762","name":"Asif Khan","phone":"0301-8294542","address":"36 B/2 Main Khayaban-e-Shabaz, DHA Phase 6","day":"Day 1","time":"10:30 - 12:00","order_type":"2 Cow Share","net_paid":"93000","payment_mode":"Online","notes":"","order_status":"Waiting"},
+{"id":"5767","name":"Shoail Mumtaz","phone":"0345-2401172","address":"House No S-9, 14th St., Iqbal Lane, DHA Ph 8","day":"Day 1","time":"11:00 - 12:30","order_type":"1 Goat, 3 Cow Share","net_paid":"207000","payment_mode":"Cheque","notes":"Specifications","order_status":"Waiting"},
+{"id":"5773","name":"Nashmia Hasnie","phone":"0300-2002783","address":"House No 88/2, Main Khayban-e-Tariq, Phase 06, DHA","day":"Day 2","time":"09:00 - 10:00","order_type":"4 Goat","net_paid":"300000","payment_mode":"Online","notes":"","order_status":"Waiting"},
+{"id":"5831","name":"Nadeem Ather","phone":"0331-3481098","address":"R21, Row 5, Block E, National Cement Housing Society, Gulshan e Iqbal","day":"Day 2","time":"11:00 - 12:30","order_type":"1 Budget Share","net_paid":"33500","payment_mode":"Online","notes":"","order_status":"Waiting"},
+{"id":"5832","name":"Naveed Abrar","phone":"0333-3564969","address":"House # 57-O, Block 2, PECSH, Karachi","day":"Day 1","time":"01:00 - 02:30","order_type":"2 Budget Share","net_paid":"67000","payment_mode":"Online","notes":"No trotters","order_status":"Waiting"},
+{"id":"5833b","name":"Muhammad Hamid Saleem","phone":"0332-2935858","address":"29 C, 1st floor Askary 3, School Road, Cantt","day":"Day 1","time":"12:30 - 01:30","order_type":"1 Budget Share","net_paid":"33500","payment_mode":"Online","notes":"","order_status":"Waiting"},
+{"id":"5840","name":"Saad Ahmed","phone":"0345-2442858","address":"166-A, Adamjee Nagar, Tipu Sultan Road, Near Makkah Masjid","day":"Day 1","time":"01:00 - 02:30","order_type":"1 Budget Share","net_paid":"33500","payment_mode":"Online","notes":"","order_status":"Waiting"},
+{"id":"5841","name":"Mumtaz ul Hassan","phone":"0300-3334998","address":"House # A-36, Saima Elites Villas, Near Memon Hospital, KDA Scheme 33","day":"Day 1","time":"02:00 - 03:00","order_type":"1 Budget Share","net_paid":"35000","payment_mode":"Online","notes":"","order_status":"Waiting"}
+];
+
+// ──────────── DATABASE ────────────
+function dbLoad(){
+  try{const d=localStorage.getItem(DB_KEY);if(d)return JSON.parse(d);}catch{}
+  dbSave(SEED);return JSON.parse(JSON.stringify(SEED));
+}
+function dbSave(o){localStorage.setItem(DB_KEY,JSON.stringify(o));}
+function dbGet(){return dbLoad();}
+
+// ──────────── CONSTANTS ────────────
+const STEPS=['Waiting','Slaughtered','Cutting in Progress','Ready for Delivery','Delivered'];
+const SLBLS=['Waiting','Slaughtered','Cutting','Ready','Delivered'];
+
+// ──────────── NAV ────────────
+function showPg(id,btn){
+  document.querySelectorAll('.pg').forEach(e=>e.classList.remove('on'));
+  document.querySelectorAll('.nb').forEach(e=>e.classList.remove('on'));
+  document.getElementById('pg-'+id).classList.add('on');
+  if(btn)btn.classList.add('on');
+}
+
+// ──────────── CUSTOMER SEARCH ────────────
+function doSearch(){
+  const val=document.getElementById('si').value.trim();
+  const wrap=document.getElementById('rw');
+  const lb=document.getElementById('lb');
+  if(!val){wrap.innerHTML='';return;}
+  lb.classList.add('on');
+  setTimeout(()=>{
+    lb.classList.remove('on');
+    const orders=dbGet();
+    const matches=orders.filter(o=>String(o.id).toLowerCase()===val.toLowerCase());
+    if(!matches.length){
+      wrap.innerHTML=`<div class="nf"><div class="nf-ico">🔍</div><h3>Order Not Found</h3><p>No order found for bill number <strong>${val}</strong>.<br>Please check your receipt or contact us.</p></div>`;
+    }else{
+      wrap.innerHTML=matches.map(buildCard).join('');
+    }
+  },500);
+}
+
+function buildCard(o){
+  const si=Math.max(0,STEPS.indexOf(o.order_status));
+  const steps=STEPS.map((s,i)=>{
+    const c=i<si?'done':i===si?'act':'';
+    return `<div class="step ${c}"><div class="sl"></div><div class="sd"></div><div class="stl">${SLBLS[i]}</div></div>`;
+  }).join('');
+  const now=new Date().toLocaleString('en-PK',{hour:'2-digit',minute:'2-digit',day:'numeric',month:'short'});
+  return `<div class="oc">
+    <div class="oh">
+      <div><h2>${o.name}</h2><div class="ohsub">${o.phone||''}</div></div>
+      <div class="bb">Bill #${o.id}</div>
+    </div>
+    <div class="sbar">
+      <div class="sbar-t">Order Progress</div>
+      <div class="steps">${steps}</div>
+      <div class="scur"><div class="sdot"></div><div class="stxt">${o.order_status}</div><div class="sup">Checked ${now}</div></div>
+    </div>
+    <div class="od">
+      <div class="od-t">Order Details</div>
+      <div class="dg">
+        <div class="di"><div class="dl">Day</div><div class="dv">${o.day||'—'}</div></div>
+        <div class="di"><div class="dl">Time Slot</div><div class="dv">${o.time||'—'}</div></div>
+        <div class="di"><div class="dl">Order Type</div><div class="dv">${o.order_type||'—'}</div></div>
+        <div class="di"><div class="dl">Payment</div><div class="dv">${o.payment_mode||'—'}</div></div>
+        ${o.notes?`<div class="di full"><div class="dl">Notes</div><div class="dv">${o.notes}</div></div>`:''}
+        <div class="di full"><div class="dl">Delivery Address</div><div class="dv">${o.address||'—'}</div></div>
+      </div>
+    </div>
+    <div class="cfoo"><span>Questions?</span><a href="tel:+92">Call Pak Meat</a></div>
+  </div>`;
+}
+
+// ──────────── AUTH ────────────
+function login(){
+  if(document.getElementById('pin').value===PIN){
+    document.getElementById('ag').style.display='none';
+    document.getElementById('ap').style.display='block';
+    document.getElementById('fab').classList.add('on');
+    renderAdmin();
+  }else{
+    document.getElementById('perr').style.display='block';
+    document.getElementById('pin').value='';
+  }
+}
+function logout(){
+  document.getElementById('ag').style.display='block';
+  document.getElementById('ap').style.display='none';
+  document.getElementById('fab').classList.remove('on');
+  document.getElementById('pin').value='';
+  document.getElementById('perr').style.display='none';
+}
+
+// ──────────── ADMIN RENDER ────────────
+function renderAdmin(){
+  const orders=dbGet();
+  document.getElementById('asub').textContent=`${orders.length} total orders · Eid ul Adha 2026`;
+  renderStats(orders);
+  renderTbl();
+}
+
+const STAT_COLS={
+  'Waiting':'#6b7280','Slaughtered':'#92400e',
+  'Cutting in Progress':'#9a3412','Ready for Delivery':'#1e40af','Delivered':'#065f46'
+};
+const STAT_LBL={'Waiting':'Waiting','Slaughtered':'Slaughtered','Cutting in Progress':'Cutting','Ready for Delivery':'Ready','Delivered':'Delivered'};
+
+function renderStats(orders){
+  if(!orders)orders=dbGet();
+  const cnt={};
+  STEPS.forEach(s=>cnt[s]=0);
+  orders.forEach(o=>{if(cnt[o.order_status]!==undefined)cnt[o.order_status]++;});
+  document.getElementById('stats').innerHTML=STEPS.map(s=>`
+    <div class="stat" onclick="filterByStatus('${s}')">
+      <div class="stat-n" style="color:${STAT_COLS[s]}">${cnt[s]}</div>
+      <div class="stat-l">${STAT_LBL[s]}</div>
+    </div>`).join('');
+}
+
+function filterByStatus(s){
+  document.getElementById('sfil').value=s;
+  renderTbl();
+}
+
+let _filtered=[];
+let _selected=new Set();
+
+function renderTbl(){
+  const orders=dbGet();
+  const srch=document.getElementById('asrch').value.toLowerCase();
+  const sf=document.getElementById('sfil').value;
+  const df=document.getElementById('dfil').value;
+
+  _filtered=orders.filter(o=>{
+    const ms=!srch||o.name.toLowerCase().includes(srch)||String(o.id).includes(srch)||(o.phone||'').includes(srch);
+    const mst=!sf||o.order_status===sf;
+    const md=!df||o.day===df;
+    return ms&&mst&&md;
+  });
+
+  // remove deselected from _selected
+  const validKeys=new Set(_filtered.map((_,i)=>i));
+  _selected=new Set([..._selected].filter(i=>validKeys.has(i)));
+
+  const tb=document.getElementById('tb');
+  if(!_filtered.length){
+    tb.innerHTML=`<tr><td colspan="7" class="nr">No orders match your filters</td></tr>`;
+    document.getElementById('rcount').textContent='';
+    updateBulkBar();
+    return;
+  }
+
+  const statusClass={'Waiting':'Waiting','Slaughtered':'Slaughtered','Cutting in Progress':'Cutting','Ready for Delivery':'Ready','Delivered':'Delivered'};
+
+  tb.innerHTML=_filtered.map((o,i)=>`<tr>
+    <td><input type="checkbox" class="chk row-chk" data-i="${i}" ${_selected.has(i)?'checked':''} onchange="toggleRow(${i},this.checked)"></td>
+    <td class="tid">${o.id}</td>
+    <td class="tn">${o.name}<br><span style="font-size:11px;color:var(--tm);font-weight:400">${o.phone||''}</span></td>
+    <td style="font-size:12px">${o.order_type||'—'}</td>
+    <td style="font-size:12px">${o.day||'—'}<br><span style="color:var(--tm);font-size:11px">${o.time||''}</span></td>
+    <td>
+      <select class="ssel" id="ss${i}" onchange="markDirty(${i})">
+        ${STEPS.map(s=>`<option value="${s}"${o.order_status===s?' selected':''}>${s}</option>`).join('')}
+      </select>
+    </td>
+    <td style="white-space:nowrap">
+      <button class="svbtn" id="sb${i}" onclick="saveStatus(${i})" disabled>Save</button>
+      <button class="editbtn" onclick="editOrder(${i})">Edit</button>
+      <button class="delbtn" onclick="delOrder(${i})">✕</button>
+    </td>
+  </tr>`).join('');
+
+  document.getElementById('rcount').textContent=`Showing ${_filtered.length} of ${orders.length} orders`;
+  document.getElementById('chkAll').checked=false;
+  updateBulkBar();
+}
+
+function markDirty(i){document.getElementById('sb'+i).disabled=false;}
+
+function saveStatus(i){
+  const orders=dbGet();
+  const o=_filtered[i];
+  const newS=document.getElementById('ss'+i).value;
+  const idx=orders.findIndex(x=>x.id===o.id&&x.name===o.name);
+  if(idx!==-1){orders[idx].order_status=newS;dbSave(orders);}
+  const btn=document.getElementById('sb'+i);
+  btn.textContent='✓ Saved';btn.classList.add('ok');btn.disabled=true;
+  setTimeout(()=>{btn.textContent='Save';btn.classList.remove('ok');},2200);
+  renderStats();
+  toast('✓ '+o.name.split(' ')[0]+' → '+newS);
+}
+
+function delOrder(i){
+  const o=_filtered[i];
+  if(!confirm(`Delete order for ${o.name} (Bill #${o.id})?`))return;
+  const orders=dbGet().filter(x=>!(x.id===o.id&&x.name===o.name));
+  dbSave(orders);
+  renderAdmin();
+  toast('Order deleted');
+}
+
+// ──────────── CHECKBOXES + BULK ────────────
+function toggleRow(i,checked){
+  if(checked)_selected.add(i);else _selected.delete(i);
+  updateBulkBar();
+}
+function toggleAll(checked){
+  _filtered.forEach((_,i)=>{
+    if(checked)_selected.add(i);else _selected.delete(i);
+    const cb=document.querySelector(`.row-chk[data-i="${i}"]`);
+    if(cb)cb.checked=checked;
+  });
+  updateBulkBar();
+}
+function updateBulkBar(){
+  const bar=document.getElementById('bulkBar');
+  if(_selected.size>0){
+    bar.classList.add('on');
+    document.getElementById('bulkCount').textContent=`${_selected.size} order${_selected.size>1?'s':''} selected`;
+  }else{
+    bar.classList.remove('on');
+  }
+}
+function clearSel(){
+  _selected.clear();
+  document.querySelectorAll('.row-chk').forEach(c=>c.checked=false);
+  document.getElementById('chkAll').checked=false;
+  updateBulkBar();
+}
+function bulkUpdate(){
+  const newS=document.getElementById('bulkSel').value;
+  if(!newS){alert('Please select a status to apply.');return;}
+  if(!_selected.size)return;
+  if(!confirm(`Set ${_selected.size} order(s) to "${newS}"?`))return;
+  const orders=dbGet();
+  [..._selected].forEach(i=>{
+    const o=_filtered[i];
+    const idx=orders.findIndex(x=>x.id===o.id&&x.name===o.name);
+    if(idx!==-1)orders[idx].order_status=newS;
+  });
+  dbSave(orders);
+  clearSel();
+  renderAdmin();
+  toast(`✓ ${_selected.size||'Selected'} orders updated to ${newS}`);
+}
+
+// ──────────── MODAL (ADD/EDIT) ────────────
+let _editIdx=null;
+
+function openModal(){
+  _editIdx=null;
+  document.getElementById('modalTitle').textContent='Add New Order';
+  ['bill','name','phone','type','address','time','paid','notes'].forEach(f=>document.getElementById('f-'+f).value='');
+  document.getElementById('f-day').value='';
+  document.getElementById('f-paymode').value='';
+  document.getElementById('f-status').value='Waiting';
+  document.getElementById('modalBg').classList.add('on');
+  setTimeout(()=>document.getElementById('f-bill').focus(),100);
+}
+
+function editOrder(i){
+  const o=_filtered[i];
+  _editIdx=i;
+  document.getElementById('modalTitle').textContent='Edit Order';
+  document.getElementById('f-bill').value=o.id;
+  document.getElementById('f-name').value=o.name;
+  document.getElementById('f-phone').value=o.phone||'';
+  document.getElementById('f-type').value=o.order_type||'';
+  document.getElementById('f-address').value=o.address||'';
+  document.getElementById('f-day').value=o.day||'';
+  document.getElementById('f-time').value=o.time||'';
+  document.getElementById('f-paid').value=o.net_paid||'';
+  document.getElementById('f-paymode').value=o.payment_mode||'';
+  document.getElementById('f-notes').value=o.notes||'';
+  document.getElementById('f-status').value=o.order_status||'Waiting';
+  document.getElementById('modalBg').classList.add('on');
+}
+
+function closeModal(){document.getElementById('modalBg').classList.remove('on');}
+
+function saveOrder(){
+  const bill=document.getElementById('f-bill').value.trim();
+  const name=document.getElementById('f-name').value.trim();
+  if(!bill||!name){alert('Bill No and Customer Name are required.');return;}
+  const newOrder={
+    id:bill,name,
+    phone:document.getElementById('f-phone').value.trim(),
+    order_type:document.getElementById('f-type').value.trim(),
+    address:document.getElementById('f-address').value.trim(),
+    day:document.getElementById('f-day').value,
+    time:document.getElementById('f-time').value.trim(),
+    net_paid:document.getElementById('f-paid').value.trim(),
+    payment_mode:document.getElementById('f-paymode').value,
+    notes:document.getElementById('f-notes').value.trim(),
+    order_status:document.getElementById('f-status').value,
+  };
+  let orders=dbGet();
+  if(_editIdx!==null){
+    const o=_filtered[_editIdx];
+    const idx=orders.findIndex(x=>x.id===o.id&&x.name===o.name);
+    if(idx!==-1)orders[idx]=newOrder;
+    toast('✓ Order updated');
+  }else{
+    if(orders.find(x=>x.id===bill)){
+      if(!confirm(`Bill #${bill} already exists. Add anyway?`))return;
+    }
+    orders.push(newOrder);
+    toast('✓ Order added — Bill #'+bill);
+  }
+  dbSave(orders);
+  closeModal();
+  renderAdmin();
+}
+
+document.getElementById('modalBg').addEventListener('click',function(e){if(e.target===this)closeModal();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+
+// ──────────── TOAST ────────────
+let _toastTimer;
+function toast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.classList.add('on');
+  clearTimeout(_toastTimer);
+  _toastTimer=setTimeout(()=>t.classList.remove('on'),2800);
+}
+
+// ──────────── INIT ────────────
+window.addEventListener('DOMContentLoaded',()=>{
+  dbLoad();
+  document.getElementById('si').focus();
+});
+</script>
+</body>
+</html>
