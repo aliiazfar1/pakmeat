@@ -637,11 +637,15 @@ function doSearch(){
 
 function buildCard(o){
   const si=Math.max(0,STEPS.indexOf(o.order_status));
+  const isDelivered=o.order_status==='Delivered';
   const steps=STEPS.map((s,i)=>{
-    const c=i<si?'done':i===si?'act':'';
+    const c=i<si?'done':i===si?(isDelivered?'done':'act'):'';
     return `<div class="step ${c}"><div class="sl"></div><div class="sd"></div><div class="stl">${SLBLS[i]}</div></div>`;
   }).join('');
   const now=new Date().toLocaleString('en-PK',{hour:'2-digit',minute:'2-digit',day:'numeric',month:'short'});
+  const curDot=isDelivered?`<div class="sdot" style="background:#16a34a;animation:none"></div>`:`<div class="sdot"></div>`;
+  const curBar=isDelivered?`style="background:#dcfce7;border-color:#86efac"`:``;
+  const curTxt=isDelivered?`style="color:#15803d;font-weight:600"`:``;
   return `<div class="oc">
     <div class="oh">
       <div><h2>${o.name}</h2><div class="ohsub">${o.phone||''}</div></div>
@@ -650,7 +654,7 @@ function buildCard(o){
     <div class="sbar">
       <div class="sbar-t">Order Progress</div>
       <div class="steps">${steps}</div>
-      <div class="scur"><div class="sdot"></div><div class="stxt">${o.order_status}</div><div class="sup">Checked ${now}</div></div>
+      <div class="scur" ${curBar}>${curDot}<div class="stxt" ${curTxt}>${isDelivered?'✓ Delivered':o.order_status}</div><div class="sup">Checked ${now}</div></div>
     </div>
     <div class="od">
       <div class="od-t">Order Details</div>
